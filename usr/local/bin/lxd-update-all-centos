@@ -1,5 +1,5 @@
 #!/bin/sh
-# (lyvi) TODO: rewrite into one script
+# (lyvi) TODO: rewrite into one script: detect container distro automatically, allow parameters
 echo "$(tput bold)$(tput setaf 2)Updating all CentOS containers...$(tput sgr0)"
 
 for container in $(lxc -c ns --format csv ls|grep RUNNING|cut -f1 -d','); do

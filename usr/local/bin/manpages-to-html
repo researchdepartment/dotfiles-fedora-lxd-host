@@ -1,0 +1,14 @@
+#!/bin/sh
+# (lyvi) TODO: 
+#              generate manpages for every command on every lxd container
+#              better validation checks
+#              ??? general improvements
+
+for page in $(find /usr/share/man/man1 -name '*.gz'); do
+        filename="${page##*/}"
+        pagename="${filename%%.*}"
+
+        zcat $page | man2html | sudo tee "/root/containers/archiver/rootfs/home/archiver/www/testing/$pagename.html"
+        chmod -R --reference=/root/containers/archiver/rootfs/home/archiver/www/ /root/containers/archiver/rootfs/home/archiver/www/testing/
+        chown -R --reference=/root/containers/archiver/rootfs/home/archiver/www/ /root/containers/archiver/rootfs/home/archiver/www/testing/
+done

@@ -1,2 +1,2 @@
-!/bin/sh
-sudo dnf -y install snapd openssh-server ping wget curl tmux figlet iputils fish cronie man2html nmap-netcat
+#!/bin/sh
+sudo dnf -y install snapd openssh-server wget curl tmux figlet iputils fish cronie man2html nmap-ncat

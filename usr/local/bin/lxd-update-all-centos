@@ -1,0 +1,12 @@
+#!/bin/sh
+# (lyvi) TODO: rewrite into one script
+echo "$(tput bold)$(tput setaf 2)Updating all CentOS containers...$(tput sgr0)"
+
+for container in $(lxc -c ns --format csv ls|grep RUNNING|cut -f1 -d','); do
+	echo "$(tput bold)$(tput setaf 3)Updating $container$(tput sgr0) ($(tput setaf 2)all updates$(tput sgr0))$(tput sgr0)$(tput setaf 7)"
+	lxc exec $container -- yum -y update
+	echo "$(tput sgr0)$(tput bold)$(tput setaf 3)Finished updating $container, cleaning package cache$(tput sgr0)$(tput setaf 7)"
+	lxc exec $container -- yum -y clean packages
+done
+
+echo "$(tput sgr0)$(tput bold)$(tput setaf 2)Done!$(tput sgr0)"

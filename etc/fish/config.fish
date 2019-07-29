@@ -19,7 +19,7 @@ end
 
 alias psg="ps aux | grep"
 alias hsg="history | grep"
-alias ls='ls -haltor --color=auto'
+alias ls='ls -haltr --color=auto'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
